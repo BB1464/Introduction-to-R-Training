@@ -87,4 +87,3 @@ dat2[3] # This is used to subset a factor
 
 
 
-
