@@ -100,5 +100,6 @@ month.name <- month.name # This shows the Month in Full
 
 # Apply the toupper and tolower function to the month ------------------
 
-
+tolower(month.name) # This convert the month to lower case
+toupper(month.abb) # This convert the month to upper case
 
