@@ -103,3 +103,39 @@ month.name <- month.name # This shows the Month in Full
 tolower(month.name) # This convert the month to lower case
 toupper(month.abb) # This convert the month to upper case
 
+
+
+
+# Exploring Functions from Base R -------------------------------
+
+# Let us use the iris data set for demonstration
+
+data(iris)
+
+iris
+
+?grep
+
+grep(pattern = 'virginica',x = iris$Species) # this line check if their is virginica in the Species column in the iris data set
+
+?grepl
+
+grepl(pattern = 'setosa',x = iris$Species) # this line check if their is setosa in the Species column in the iris data set
+
+unique(x = iris$Species) # This checks for unique values in the Species column using the iris data set
+
+?sub
+
+sub(pattern = 'setosa',replacement = 'TRUE',x = iris$Species)
+
+# Let me create a character vector
+Vec_Character <- c('Hello World')
+
+nchar(Vec_Character) # This check for the number of characters in a character vector
+
+unique(Vec_Character) # This check for the number of unique values in a character vector
+
+print(Vec_Character) # This print the character vector
+
+
+
