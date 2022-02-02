@@ -140,3 +140,52 @@ print(Vec_Character) # This print the character vector
 
 
 
+#### 02-Feb- 2022 #####
+
+getwd() # This shows you your absolute path on your system
+
+
+# setwd(dir = '~/R Projects Files/Introduction to R Training/')
+
+?source
+
+source('Script/Data Import.R',print.eval = TRUE)
+
+library(tidyverse)
+
+data("mtcars")
+View(mtcars)
+
+mtcars %>% glimpse()
+
+# Check for unique values in each column
+mtcars %>% map(.f = unique)
+
+
+# Convert Some Columns to factors 
+
+mtcars_trans <- mtcars %>%  # Pipe
+  mutate(across(.cols = c('vs','am','cyl'),.fns = as.factor))
+
+
+glimpse(mtcars_trans)
+
+
+
+# Summary of the data
+
+summary(mtcars_trans)
+
+
+# Regression Analysis in R
+
+shapiro.test(mtcars_trans$mpg) # Our dataset is normally distributed
+
+bartlett.test(x = mtcars_trans$mpg,g = mtcars_trans$cyl) # The variance was heterogeneous
+
+
+model <- lm(formula = mpg~cyl+vs,data = mtcars_trans)
+anova(model)
+plot(model) # Diagnostic plot
+
+summary(model)
