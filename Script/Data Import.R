@@ -135,6 +135,7 @@ nchar(Vec_Character) # This check for the number of characters in a character ve
 
 unique(Vec_Character) # This check for the number of unique values in a character vector
 
+
 print(Vec_Character) # This print the character vector
 
 
