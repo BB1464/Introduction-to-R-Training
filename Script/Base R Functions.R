@@ -24,8 +24,11 @@ mtcars$carb_mod <- ifelse(mtcars$carb==1,'G1',ifelse(mtcars$carb==2,'G2',ifelse(
 
 # Assignment -----------------------------------------------------
 
+
 Assingnment <- data.frame(Weather=c('Hot','Cold','Rainy'),Genotype=c('G1','G2','G3'),Plant_Height=c(40,20,60),Leaf_Area=c(10,15,22))
 
 # Write an ifelse statement to convert the Weather and Genotype into numeric values.
+
+
 
 
