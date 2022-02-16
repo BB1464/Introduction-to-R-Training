@@ -23,6 +23,8 @@ install.packages('here')
 
 write_xlsx(mtcars,here::here('Data/mtcars.xlsx'))
 
+write.csv(mtcars,here::here('Data/mtcars.csv'),row.names = FALSE)
+
 
 
 # This is to read a csv file into R ---------------------------------------
@@ -38,6 +40,21 @@ dat1 <- read_excel(here::here('Data/mtcars.xlsx'))
 
 
 
+
+############################################################################
+############################################################################
+###                                                                      ###
+###                              ASSIGNMENT                              ###
+###                                                                      ###
+############################################################################
+############################################################################
+
+
+# Create a new folder  and name it assignment data
+
+# write a csv and excel file into the folder
+
+# import the csv and excel file into R
 
 
 
