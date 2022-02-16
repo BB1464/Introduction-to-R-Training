@@ -1,0 +1,33 @@
+---
+title: "Introduction to Tidyverse"
+subtitle: 
+author: "Oluwafemi Oyedele"
+institute: "Research Fellow, IITA"
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+The tidyverse is a collection of packages that can easily be installed with a single “meta”-package, which is called “tidyverse.” This provides a convenient way of downloading and installing all tidyverse packages with a single R command:
+
+```{r,eval=FALSE}
+install.packages('tidyverse')
+```
+
+```{r}
+library(tidyverse)
+```
+
+---
+![](image/01_tidyverse_data_science.png)
+
+
+---
+# Datascience workflow in R
+![](image/data-science-workflow.png)
+
