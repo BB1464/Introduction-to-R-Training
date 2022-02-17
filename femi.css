@@ -1,0 +1,73 @@
+
+.title {
+    text-shadow: 0 0;
+}
+
+
+.title h2 {
+  padding-top: 150px;
+}
+
+
+.title h3 {
+  padding-top: 100px;
+  text-shadow: 0 0;
+}
+
+
+.abuja h1 {
+  color: #1e51a4;
+  font-family: 'Source Sans Pro', Roboto, arial;
+  font-weight: 800;
+  padding-top: 450px;
+  text-shadow: 2px;
+
+}
+
+h2, h3, h4 {
+  color: #1e51a4;
+  font-family: 'Source Sans Pro', Roboto, arial;
+  font-weight: 600;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+.my_date {
+  font-family: 'Cormorant Upright', serif;
+  font-weight: 600;
+  font-size: 24px;
+  font-style: italic;
+}
+
+li, p {
+line-height: 1.5em;
+<!-- font-size: .9em -->
+}
+
+
+#stephen-balogun {
+line-height: 2em;
+}
+
+
+.remark-code,
+.remark-inline-code {
+  font-family: 'Inconsolata', 'Lucida Console', Monaco, monospace;
+  color: #e71111;
+}
+
+
+.hljs-github .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    color: #333;
+    background: #f8f8f8;
+}
+
+.question h1 {
+  color:#6cbce2;
+  text-shadow: 3px 3px 3px black;
+}
