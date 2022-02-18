@@ -5,8 +5,10 @@
     <meta charset="utf-8" />
     <meta name="author" content="Oluwafemi Oyedele" />
     <script src="libs/header-attrs-2.11/header-attrs.js"></script>
-    <link href="libs/remark-css-0.0.1/rladies.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/rladies-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/uio.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/uio-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="femi.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -15,11 +17,61 @@ class: center, middle, inverse, title-slide
 # Introduction to Tidyverse
 ### Oluwafemi Oyedele
 ### Research Fellow, IITA
-### 2016/12/12 (updated: 2022-02-16)
+### 2021/02/16 (updated: 2022-02-17)
 
 ---
 
 
+The tidyverse is a collection of packages that can easily be installed with a single “meta”-package, which is called “tidyverse.” This provides a convenient way of downloading and installing all tidyverse packages with a single R command:
+
+
+```r
+install.packages('tidyverse')
+```
+
+
+```r
+library(tidyverse)
+```
+
+---
+![](image/01_tidyverse_data_science.png)
+
+
+---
+# Datascience workflow in R
+![](image/data-science-workflow.png)
+
+
+---
+# Data tidying with tidyr
+It is often said that 80% of data analysis is spent on the cleaning and preparing data. And it’s not just a first step, but it must be repeated many times over the course of analysis as new problems come to light or new data is collected. 
+
+
+The principles of tidy data provide a standard way to organise data values within a dataset. A standard makes initial data cleaning easier because you don’t need to start from scratch and reinvent the wheel every time. The tidy data standard has been designed to facilitate initial exploration and analysis of the data, and to simplify the development of data analysis tools that work well together. 
+
+
+---
+
+- The goal of tidyr is to help you create tidy data. Tidy data is data where:
+
+![](image/tidydata.png)
+
+ We will explore four function from the tidyr  pacakage:
+
+
+
+
+.pull-left[
+
+- pivot longer
+- pivot wider
+]
+
+.pull-right[
+- separate
+- unite
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
