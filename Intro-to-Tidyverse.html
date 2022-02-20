@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 # Introduction to Tidyverse
 ### Oluwafemi Oyedele
 ### Research Fellow, IITA
-### 2021/02/16 (updated: 2022-02-17)
+### 2021/02/16 (updated: 2022-02-18)
 
 ---
 
@@ -32,6 +32,23 @@ install.packages('tidyverse')
 
 ```r
 library(tidyverse)
+```
+
+```
+## -- Attaching packages ---------------------------------------- tidyverse 1.3.1 --
+```
+
+```
+## v ggplot2 3.3.5     v purrr   0.3.4
+## v tibble  3.1.6     v dplyr   1.0.8
+## v tidyr   1.2.0     v stringr 1.4.0
+## v readr   2.1.2     v forcats 0.5.1
+```
+
+```
+## -- Conflicts ------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
 ```
 
 ---
@@ -55,6 +72,10 @@ The principles of tidy data provide a standard way to organise data values withi
 
 - The goal of tidyr is to help you create tidy data. Tidy data is data where:
 
+1. Every column is variable.
+2. Every row is an observation.
+3. Every cell is a single value.
+
 ![](image/tidydata.png)
 
  We will explore four function from the tidyr  pacakage:
@@ -72,6 +93,14 @@ The principles of tidy data provide a standard way to organise data values withi
 - separate
 - unite
 ]
+
+---
+# Learning Outcomes
+- ~~**import csv and excel files into R**~~
+- ~~**Write csv and excel file out of R**~~
+- Introduction to tidyr
+- pivot_longer and pivot wider function
+- seperate and unite function
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
