@@ -71,6 +71,32 @@ The principles of tidy data provide a standard way to organise data values withi
 # Learning Outcomes
 - ~~**import csv and excel files into R**~~
 - ~~**Write csv and excel file out of R**~~
-- Introduction to tidyr
-- pivot_longer and pivot wider function
-- seperate and unite function
+- ~~**Introduction to tidyr**~~
+- ~~**pivot_longer and pivot wider function**~~
+- ~~**seperate and unite function**~~
+# DPLYR Package
+- Select
+- Filter
+- Mutate
+- Transmute
+- group_by
+- Summarize
+- Arrange
+---
+# Data Manipulation with dplyr
+
+dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
+
+- select() picks variables based on their names.
+
+- filter() picks cases based on their values.
+
+- mutate() adds new variables that are functions of existing variables but the existing variables are preserve
+
+- transmute() add new variables and drops the existing ones
+
+- summarise() reduces multiple values down to a single summary and this works with group_by arguments
+
+- arrange() changes the ordering of the rows.
+
+
