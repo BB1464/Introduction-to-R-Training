@@ -163,3 +163,95 @@ Table_Separate <- Table_Saparate %>%
 ############################################################################
 
 # Use the four functions that we learn today to clean up the world_bank_pop dataset that is in the tidyr package in R
+
+
+
+###########################################################################
+###########################################################################
+###                                                                     ###
+###                                DPLYR                                ###
+###                                                                     ###
+###########################################################################
+###########################################################################
+
+# select function
+
+library(tidyverse)
+
+data("starwars")
+
+View(starwars)
+names(starwars)
+
+select(.data = starwars,name,height,mass) # This select the first three column in the starwars data set
+
+## We can also select by their index position
+select(starwars,1:5)
+
+# Other select helper function
+
+select(starwars,starts_with('h'))# This checks all columns for values that start with letter 'h'
+
+select(starwars,ends_with('e')) # This checks for pattern that ends with 'e'
+
+
+select(starwars,contains('ar')) # This also checks for specific pattern in our data frame.
+
+
+
+
+###########################################################################
+###########################################################################
+###                                                                     ###
+###                           FILTER FUNCTION                           ###
+###                                                                     ###
+###########################################################################
+###########################################################################
+
+# Check all columns for the number of missing data in each column
+colSums(is.na(starwars))
+
+# Remove all the missing data using the filter function
+
+stars <- na.omit(starwars) # Base R function
+
+drop_na(starwars) # Tidyr Function
+
+starwars %>% filter(across(.cols = everything(),~!is.na(.)))
+
+
+# Filter all eye colour that are blue
+
+dplyr::filter(stars,eye_color=='blue')
+
+
+# Let us filter out for two conditions in skin_color
+
+filter(stars, skin_color %in%c('fair','light'))
+
+
+filter(stars,homeworld%in%c('Tatooine','tewjon','Corellia'))
+
+# You need to really understand the logical operators very well before you can master the filter function
+# > 
+# <
+# <=
+# >=
+# != # not equall to
+# | # or
+# and # & 
+
+filter(stars,height>100 & skin_color=='fair')
+
+
+############################################################################
+############################################################################
+###                                                                      ###
+###                              ASSIGNMENT                              ###
+###                                                                      ###
+############################################################################
+############################################################################
+
+# Using all the above logical operator apply the filter function to the diamonds data set from the tidyverse package.
+
+data("diamonds")
