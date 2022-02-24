@@ -255,3 +255,82 @@ filter(stars,height>100 & skin_color=='fair')
 # Using all the above logical operator apply the filter function to the diamonds data set from the tidyverse package.
 
 data("diamonds")
+
+
+
+
+###########################################################################
+###########################################################################
+###                                                                     ###
+###                     DPLYR FUNCTIONS CONINUATION                     ###
+###                                                                     ###
+###########################################################################
+###########################################################################
+
+library(tidyverse)
+
+data(iris)
+names(iris)
+
+# Mutate function
+mutate(iris,Weight=Sepal.Length/2,Mass=Sepal.Length*10) %>% head() # This is used to create a new column
+
+
+# Transmute Function
+transmute(iris,Weight=Sepal.Length/2,Mass=Sepal.Length*10) %>% head() # This is used to create a new column but it will drop all existing column and only retain the new column.
+
+# Group_by
+
+mutate(iris, Weight = Sepal.Length / 2, Mass = Sepal.Length * 10) %>%
+  group_by(Species) %>%
+  summarise(
+    n = n(),
+    sd = mean(Sepal.Length),
+    Std = sd(Petal.Length),
+    SE = Std / sqrt(n)
+  ) # The count funtion count every observation based on grouping variable.
+
+# Arrange in accending order with arrange function
+
+mutate(iris, Weight = Sepal.Length / 2, Mass = Sepal.Length * 10) %>%
+  group_by(Species) %>%
+  summarise(
+    n = n(),
+    sd = mean(Sepal.Length),
+    Std = sd(Petal.Length),
+    SE = Std / sqrt(n)
+  ) %>%
+  arrange(SE)
+
+# Arrange in descending order
+mutate(iris, Weight = Sepal.Length / 2, Mass = Sepal.Length * 10) %>%
+  group_by(Species) %>%
+  summarise(
+    n = n(),
+    sd = mean(Sepal.Length),
+    Std = sd(Petal.Length),
+    SE = Std / sqrt(n)
+  ) %>%
+  arrange(desc(SE))
+
+# Alternatively
+# Arrange in descending order
+mutate(iris, Weight = Sepal.Length / 2, Mass = Sepal.Length * 10) %>%
+  group_by(Species) %>%
+  summarise(
+    n = n(),
+    sd = mean(Sepal.Length),
+    Std = sd(Petal.Length),
+    SE = Std / sqrt(n)
+  ) %>%
+  arrange(-SE)
+
+
+# Summary of all the function using the mtcars dataset
+mtcars %>% 
+  select(1:11) %>% # This select all the variables
+filter(mpg<20)  %>% # This filter all mpg < 20
+mutate(Mass=mpg*10) %>% 
+group_by(am,gear) %>% 
+  summarise(n=n(),Mean=mean(mpg),Std=sd(Mass),SE=Std/sqrt(n)) %>% 
+  arrange(-SE)
