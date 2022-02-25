@@ -334,3 +334,82 @@ mutate(Mass=mpg*10) %>%
 group_by(am,gear) %>% 
   summarise(n=n(),Mean=mean(mpg),Std=sd(Mass),SE=Std/sqrt(n)) %>% 
   arrange(-SE)
+
+
+
+
+############################################################################
+############################################################################
+###                                                                      ###
+###                       ACROSS FUNCTION IN DPLYR                       ###
+###                                                                      ###
+############################################################################
+############################################################################
+
+library(tidyverse)
+data("iris")
+str(iris)
+
+iris %>% 
+  summarise(across(where(is.numeric),.fns = mean))
+
+# Select
+iris %>% select(across(where(is.character),.fns = as.factor))
+
+#iris %>% select(across(.cols = 5,.fns = factor))
+
+
+############################################################################
+############################################################################
+###                                                                      ###
+###                      RELATIONAL DATA WITH DPLYR                      ###
+###                                                                      ###
+############################################################################
+############################################################################
+
+# install.packages('nycflights13')
+library(nycflights13)
+
+# Mutating Joins
+## Left Join
+## inner Join
+## Right join
+
+flight <- nycflights13::flights
+data("airlines")
+
+# left_join
+Left_join <- airlines %>% left_join(flight,by = 'carrier')
+
+# Right Join
+Right_Join <- flight %>% right_join(airlines,by='carrier')
+
+# Inner_Join
+inner_join(airlines,flight,by='carrier')
+
+Inner_Join <- airlines %>% 
+  inner_join(flight,by = 'carrier')
+
+
+# Full_Join
+Full_Join <- full_join(airlines,flight)
+
+
+# Filtering Join
+Semi_Join <- airlines %>% 
+  semi_join(flight,by = 'carrier')
+
+airlines %>%  
+  anti_join(flight,copy = 'carrier')
+
+
+###########################################################################
+###########################################################################
+###                                                                     ###
+###                              LUBRIDATE                              ###
+###                                                                     ###
+###########################################################################
+###########################################################################
+
+#install.packages('lubridate')
+library(lubridate)
