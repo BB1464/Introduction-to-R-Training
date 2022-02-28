@@ -412,4 +412,76 @@ airlines %>%
 ###########################################################################
 
 #install.packages('lubridate')
+# install.packages('nycflight13')
+
+
 library(lubridate)
+library(nycflights13) # For getting the flight data set
+library(tidyverse)
+
+
+# Date and times is a very difficult objects to work with using base R, but the lubridate package will help us to overcome this challenge.
+
+
+data("flights")
+
+
+# Creating the date object from individual string
+df <- ymd('2022-02-28')
+df1 <- dmy('28-02-2022')
+df2 <- mdy(02282022)
+
+
+
+# How to create date from date time
+df3 <- ymd_hms('2022-02-28 04:06:14')
+df4 <- ymd_hm('2022-02-27 07:04')
+
+
+
+# Creating Date from an existing date time 
+DT <- flights %>% 
+  select(year,month,day) %>% 
+  mutate(Arrival_Date=make_date(year,month,day))
+
+
+class(DT)
+
+
+# Lubridate has alot of accessor functions
+
+today()
+
+now()
+
+head(DT)
+
+# Let me exrract all the year
+year(DT$Arrival_Date)
+
+
+
+
+# Alternatively
+DT %>%
+  mutate(YEAR=year(Arrival_Date)) %>% as_tibble()
+
+
+# Let me extract all the Month
+
+DT %>%
+  mutate(MONTH=month(Arrival_Date)) %>% as_tibble()
+
+# The number of day in a given Week
+
+DT %>%
+  mutate(Weekday=wday(Arrival_Date)) %>% as_tibble()
+
+# This is a leap hear
+leap_year(date = '2020-02-28')
+
+# This is not a leap year
+leap_year(date = '2022-02-28')
+
+
+
