@@ -1,0 +1,167 @@
+---
+title: "Introduction to Lubridate and Forcats Package in R"
+subtitle: 
+author: 
+  - "Oluwafemi Oyedele"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: [xaringan-themer.css]
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#1381B0",
+  secondary_color = "#FF961C",
+  inverse_header_color = "#FFFFFF"
+)
+```
+
+# Lubridate Package in R
+
+- Yesterday we did a few functions on the lubridate package and I said that the lubridate package is used for manipulating date in R.
+
+- I said that the lubridate package is not part of the core tidyverse package that is why we have to install it and load it seperately.
+
+- We saw that there are three ways in which we can create a date/time using the lubridate package.
+
+1) We can create a date/time from a strings
+
+ymd('2022-01-31')
+
+mdy('01-31-2022')
+
+N/B: this function also takes unquoted numbers
+
+ymd(20220131)
+
+
+2) We can create a date/time from individual date-time components as we can see in the flight dataset where we have to usethe make_date and make_datetime to create a datetime.
+---
+flights %>% 
+select(year,month,day,hour,minute) %>% 
+mutate(Departure=make_datetime(year,month,day,hour,minute))
+
+
+3) We also create a date from an existing date/time objects
+ This is very useful if you want to switch from one date fromat to another e.g.
+ 
+ as_datetime(today())
+ 
+ # We also look at some accessor functions 
+ mday()
+ 
+ year()
+ 
+ wday()
+---
+- In R when we subtract two date we get a difftime object
+# How old is Buhari?
+
+
+Age <- today()-ymd(19791014)
+
+- A difftime object records a time span of seconds, minutes, hours, days, or weeks which makes it a little difficult to work with.
+
+- We can overcome this with the function below
+
+as_duration (Age)
+
+---
+Assignment
+
+1) What happens if you parse a string that contains invalid dates?
+
+2) What does the tzone argument to today() do? Why is it important?
+
+
+---
+# Introduction to Forcats Package in R
+
+- In R factors are used to work with categorical variables, variables that have a fixed and known set of possible values.
+- We will be working with the gss_cat data set from the forcats package.
+- When factors are stored in a tibble the best way to view them is to use the count function or to visualize them using a bar chart e.g.
+
+gss_cat %>% 
+count(race)
+
+# The functions we will be looking at are:
+1) fct_reorder and fct_reorder2: This reorder factor levels by sorting along another variable
+
+2) fct_recode: This is used to recode factor levels by hand
+
+3) fct_colapse: This is used to collapse factor levels into manually defined groups
+
+
+
+
+
+###########################################################################
+###########################################################################
+###                                                                     ###
+###                           FORCATS PACKAGE                           ###
+###                                                                     ###
+###########################################################################
+###########################################################################
+
+
+library(tidyverse)
+
+head(gss_cat)
+
+gss_cat %>% 
+count(partyid)
+
+# fct_reorder function
+gss_cat1 =gss_cat %>% 
+mutate(tvhours=mean(tvhours,n=n()))
+
+fct_reorder <- gss_cat1 %>% mutate(partyid=fct_reorder(partyid,tvhours))
+
+ggplot(fct_reorder,aes(x=partyid,y=tvhours))+geom_line()
+
+# FCT_Reorder2
+ggplot(data=gss_cat,mapping=aes(x=tvhours,color=relig,fct_reorder2(marital,relig,tvhours)))+geom_line()
+
+
+# fct_recode
+
+gss=gss_cat %>% 
+mutate(partyid=fct_recode(partyid,"Dont know"="Don't know","Not strong republican"="Not str republican","Independent near republican"="Ind,near rep","Not strong democrat"="Not str democrat"))
+
+# fct_colapse
+gss2=gss_cat %>% 
+mutate(partyid=fct_collapse(partyid,ADP=c("No answer","Don't know","Other party","Strong republican"),APC=c("Not str republican","Ind,near rep","Independent"),PDP=c("Ind,near dem","Not str democrat","Strong democrat")))
+
+
+
+############################################################################
+############################################################################
+###                                                                      ###
+###                              ASSINGMENT                              ###
+###                                                                      ###
+############################################################################
+############################################################################
+
+
+1) apply the recode and collapse function to the the marital column from the gss_cat dataset
