@@ -1,41 +1,18 @@
 ---
-title: "Introduction to Lubridate and Forcats Package in R"
-subtitle: 
-author: 
-  - "Oluwafemi Oyedele"
-date: '`r Sys.Date()`'
+title: "Tidyverse"
+subtitle: "Forcats and Stringr Package"
+author: "Oluwafemi Oyedele"
+institute: 
+date: "2016/12/12 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
-    css: [xaringan-themer.css]
+    css: ['default',"uio","uio-fonts"]
+    lib_dir: libs
     nature:
-      slideNumberFormat: "%current%"
       highlightStyle: github
       highlightLines: true
-      ratio: 16:9
-      countIncrementalSlides: true
+      countIncrementalSlides: false
 ---
-
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(
-  fig.width=9, fig.height=3.5, fig.retina=3,
-  out.width = "100%",
-  cache = FALSE,
-  echo = TRUE,
-  message = FALSE, 
-  warning = FALSE,
-  hiline = TRUE
-)
-```
-
-```{r xaringan-themer, include=FALSE, warning=FALSE}
-library(xaringanthemer)
-style_duo_accent(
-  primary_color = "#1381B0",
-  secondary_color = "#FF961C",
-  inverse_header_color = "#FFFFFF"
-)
-```
 
 # Lubridate Package in R
 
@@ -47,26 +24,43 @@ style_duo_accent(
 
 1) We can create a date/time from a strings
 
+```{r, load}
+library(tidyverse)
+library(lubridate)
+library(nycflights13)
+```
+
+```{r}
+
 ymd('2022-01-31')
 
 mdy('01-31-2022')
 
+```
 N/B: this function also takes unquoted numbers
-
+```{r}
 ymd(20220131)
+```
+
 
 
 2) We can create a date/time from individual date-time components as we can see in the flight dataset where we have to usethe make_date and make_datetime to create a datetime.
 ---
+```{r}
 flights %>% 
 select(year,month,day,hour,minute) %>% 
 mutate(Departure=make_datetime(year,month,day,hour,minute))
+```
 
 
 3) We also create a date from an existing date/time objects
  This is very useful if you want to switch from one date fromat to another e.g.
  
+ 
+```{r}
  as_datetime(today())
+```
+ 
  
  # We also look at some accessor functions 
  mday()
@@ -79,7 +73,12 @@ mutate(Departure=make_datetime(year,month,day,hour,minute))
 # How old is Buhari?
 
 
+
+```{r}
 Age <- today()-ymd(19791014)
+
+```
+
 
 - A difftime object records a time span of seconds, minutes, hours, days, or weeks which makes it a little difficult to work with.
 
@@ -102,9 +101,13 @@ Assignment
 - We will be working with the gss_cat data set from the forcats package.
 - When factors are stored in a tibble the best way to view them is to use the count function or to visualize them using a bar chart e.g.
 
+
+```{r}
 gss_cat %>% 
 count(race)
 
+```
+---
 # The functions we will be looking at are:
 1) fct_reorder and fct_reorder2: This reorder factor levels by sorting along another variable
 
@@ -125,6 +128,8 @@ count(race)
 ###########################################################################
 
 
+```{r}
+
 library(tidyverse)
 
 head(gss_cat)
@@ -132,29 +137,51 @@ head(gss_cat)
 gss_cat %>% 
 count(partyid)
 
+```
+
 # fct_reorder function
+```{r}
 gss_cat1 =gss_cat %>% 
 mutate(tvhours=mean(tvhours,n=n()))
 
+```
+
+```{r}
 fct_reorder <- gss_cat1 %>% mutate(partyid=fct_reorder(partyid,tvhours))
 
+```
+
+```{r}
 ggplot(fct_reorder,aes(x=partyid,y=tvhours))+geom_line()
 
+```
+
+
 # FCT_Reorder2
+
+```{r}
 ggplot(data=gss_cat,mapping=aes(x=tvhours,color=relig,fct_reorder2(marital,relig,tvhours)))+geom_line()
+```
+---
+
+- fct_recode
 
 
-# fct_recode
-
+```{r}
 gss=gss_cat %>% 
 mutate(partyid=fct_recode(partyid,"Dont know"="Don't know","Not strong republican"="Not str republican","Independent near republican"="Ind,near rep","Not strong democrat"="Not str democrat"))
+```
 
-# fct_colapse
+
+- fct_colapse
+
+```{r}
 gss2=gss_cat %>% 
 mutate(partyid=fct_collapse(partyid,ADP=c("No answer","Don't know","Other party","Strong republican"),APC=c("Not str republican","Ind,near rep","Independent"),PDP=c("Ind,near dem","Not str democrat","Strong democrat")))
+```
 
 
-
+---
 ############################################################################
 ############################################################################
 ###                                                                      ###
@@ -163,5 +190,6 @@ mutate(partyid=fct_collapse(partyid,ADP=c("No answer","Don't know","Other party"
 ############################################################################
 ############################################################################
 
+- Assignment
 
-1) apply the recode and collapse function to the the marital column from the gss_cat dataset
+#  apply the recode and collapse function to the the marital column from the gss_cat dataset

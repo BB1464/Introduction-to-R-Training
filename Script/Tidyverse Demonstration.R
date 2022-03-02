@@ -485,3 +485,54 @@ leap_year(date = '2022-02-28')
 
 
 
+############################################################################
+############################################################################
+###                                                                      ###
+###                 INTRODUCTION TO STRINGR PACKAGE IN R                 ###
+###                                                                      ###
+############################################################################
+############################################################################
+
+data("fruit")
+head(fruit)
+
+# str_to_lower
+# str_to_upper
+# str_to_title
+# str_view
+# str_view_all
+# str_detect
+
+
+# str_to_lower
+dat <- c('Tall','Short','Medium')
+
+str_to_lower(string = dat) # This convert all the strings to lower case
+
+# str_to_upper
+str_to_upper(string = dat)
+str_to_upper(string = fruit)
+
+# str_to_title
+str_to_title(string = dat)
+
+# str_to_sentence
+str_to_sentence(string = dat)
+
+# str_view
+str_view(string = dat,pattern = 'or')
+
+# str_view_all
+str_view_all(string = fruit,pattern = 'pp')
+
+# there are also some helper function around the str_view and str_view_all
+str_view(string = fruit,pattern = "^b")
+
+
+# str_detect
+str_detect(string = fruit,pattern = 'ap')
+
+dat1 <- data.frame(Height=c(4,5,5,8))
+
+
+sum(str_detect(words,"a")) # This is used to sum all the letters in the words dataset

@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Introduction to Lubridate and Forcats Package in R</title>
+    <title>Tidyverse</title>
     <meta charset="utf-8" />
     <meta name="author" content="Oluwafemi Oyedele" />
-    <meta name="date" content="2022-03-01" />
-    <script src="Lubridate-and-Forcat_files/header-attrs/header-attrs.js"></script>
-    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <script src="libs/header-attrs-2.11.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/uio.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/uio-fonts.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Introduction to Lubridate and Forcats Package in R
+# Tidyverse
+## Forcats and Stringr Package
 ### Oluwafemi Oyedele
-### 2022-03-01
+### 2016/12/12 (updated: 2022-03-02)
 
 ---
-
-
-
-
 
 
 # Lubridate Package in R
@@ -33,26 +31,115 @@ class: center, middle, inverse, title-slide
 
 1) We can create a date/time from a strings
 
+
+```r
+library(tidyverse)
+```
+
+```
+## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+```
+
+```
+## v ggplot2 3.3.5          v purrr   0.3.4     
+## v tibble  3.1.6          v dplyr   1.0.8     
+## v tidyr   1.2.0          v stringr 1.4.0.9000
+## v readr   2.1.2          v forcats 0.5.1
+```
+
+```
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+
+```r
+library(lubridate)
+```
+
+```
+## 
+## Attaching package: 'lubridate'
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     date, intersect, setdiff, union
+```
+
+```r
+library(nycflights13)
+```
+
+
+```r
 ymd('2022-01-31')
+```
 
+```
+## [1] "2022-01-31"
+```
+
+```r
 mdy('01-31-2022')
+```
 
+```
+## [1] "2022-01-31"
+```
 N/B: this function also takes unquoted numbers
 
+```r
 ymd(20220131)
+```
+
+```
+## [1] "2022-01-31"
+```
+
 
 
 2) We can create a date/time from individual date-time components as we can see in the flight dataset where we have to usethe make_date and make_datetime to create a datetime.
 ---
+
+```r
 flights %&gt;% 
 select(year,month,day,hour,minute) %&gt;% 
 mutate(Departure=make_datetime(year,month,day,hour,minute))
+```
+
+```
+## # A tibble: 336,776 x 6
+##     year month   day  hour minute Departure          
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             
+##  1  2013     1     1     5     15 2013-01-01 05:15:00
+##  2  2013     1     1     5     29 2013-01-01 05:29:00
+##  3  2013     1     1     5     40 2013-01-01 05:40:00
+##  4  2013     1     1     5     45 2013-01-01 05:45:00
+##  5  2013     1     1     6      0 2013-01-01 06:00:00
+##  6  2013     1     1     5     58 2013-01-01 05:58:00
+##  7  2013     1     1     6      0 2013-01-01 06:00:00
+##  8  2013     1     1     6      0 2013-01-01 06:00:00
+##  9  2013     1     1     6      0 2013-01-01 06:00:00
+## 10  2013     1     1     6      0 2013-01-01 06:00:00
+## # ... with 336,766 more rows
+```
 
 
 3) We also create a date from an existing date/time objects
  This is very useful if you want to switch from one date fromat to another e.g.
  
+ 
+
+```r
  as_datetime(today())
+```
+
+```
+## [1] "2022-03-02 UTC"
+```
+ 
  
  # We also look at some accessor functions 
  mday()
@@ -65,7 +152,12 @@ mutate(Departure=make_datetime(year,month,day,hour,minute))
 # How old is Buhari?
 
 
+
+
+```r
 Age &lt;- today()-ymd(19791014)
+```
+
 
 - A difftime object records a time span of seconds, minutes, hours, days, or weeks which makes it a little difficult to work with.
 
@@ -88,9 +180,22 @@ Assignment
 - We will be working with the gss_cat data set from the forcats package.
 - When factors are stored in a tibble the best way to view them is to use the count function or to visualize them using a bar chart e.g.
 
+
+
+```r
 gss_cat %&gt;% 
 count(race)
+```
 
+```
+## # A tibble: 3 x 2
+##   race      n
+##   &lt;fct&gt; &lt;int&gt;
+## 1 Other  1959
+## 2 Black  3129
+## 3 White 16395
+```
+---
 # The functions we will be looking at are:
 1) fct_reorder and fct_reorder2: This reorder factor levels by sorting along another variable
 
@@ -98,15 +203,131 @@ count(race)
 
 3) fct_colapse: This is used to collapse factor levels into manually defined groups
 
+
+
+
+
+###########################################################################
+###########################################################################
+###                                                                     ###
+###                           FORCATS PACKAGE                           ###
+###                                                                     ###
+###########################################################################
+###########################################################################
+
+
+
+```r
+library(tidyverse)
+
+head(gss_cat)
+```
+
+```
+## # A tibble: 6 x 9
+##    year marital         age race  rincome        partyid     relig denom tvhours
+##   &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt;          &lt;fct&gt;       &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;
+## 1  2000 Never married    26 White $8000 to 9999  Ind,near r~ Prot~ Sout~      12
+## 2  2000 Divorced         48 White $8000 to 9999  Not str re~ Prot~ Bapt~      NA
+## 3  2000 Widowed          67 White Not applicable Independent Prot~ No d~       2
+## 4  2000 Never married    39 White Not applicable Ind,near r~ Orth~ Not ~       4
+## 5  2000 Divorced         25 White Not applicable Not str de~ None  Not ~       1
+## 6  2000 Married          25 White $20000 - 24999 Strong dem~ Prot~ Sout~      NA
+```
+
+```r
+gss_cat %&gt;% 
+count(partyid)
+```
+
+```
+## # A tibble: 10 x 2
+##    partyid                n
+##    &lt;fct&gt;              &lt;int&gt;
+##  1 No answer            154
+##  2 Don't know             1
+##  3 Other party          393
+##  4 Strong republican   2314
+##  5 Not str republican  3032
+##  6 Ind,near rep        1791
+##  7 Independent         4119
+##  8 Ind,near dem        2499
+##  9 Not str democrat    3690
+## 10 Strong democrat     3490
+```
+
+# fct_reorder function
+
+```r
+gss_cat1 =gss_cat %&gt;% 
+mutate(tvhours=mean(tvhours,n=n()))
+```
+
+
+```r
+fct_reorder &lt;- gss_cat1 %&gt;% mutate(partyid=fct_reorder(partyid,tvhours))
+```
+
+
+```r
+ggplot(fct_reorder,aes(x=partyid,y=tvhours))+geom_line()
+```
+
+![](Lubridate-and-Forcat_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+
+# FCT_Reorder2
+
+
+```r
+ggplot(data=gss_cat,mapping=aes(x=tvhours,color=relig,fct_reorder2(marital,relig,tvhours)))+geom_line()
+```
+
+```
+## Warning: Removed 10146 row(s) containing missing values (geom_path).
+```
+
+![](Lubridate-and-Forcat_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+---
+
+- fct_recode
+
+
+
+```r
+gss=gss_cat %&gt;% 
+mutate(partyid=fct_recode(partyid,"Dont know"="Don't know","Not strong republican"="Not str republican","Independent near republican"="Ind,near rep","Not strong democrat"="Not str democrat"))
+```
+
+
+- fct_colapse
+
+
+```r
+gss2=gss_cat %&gt;% 
+mutate(partyid=fct_collapse(partyid,ADP=c("No answer","Don't know","Other party","Strong republican"),APC=c("Not str republican","Ind,near rep","Independent"),PDP=c("Ind,near dem","Not str democrat","Strong democrat")))
+```
+
+
+---
+############################################################################
+############################################################################
+###                                                                      ###
+###                              ASSINGMENT                              ###
+###                                                                      ###
+############################################################################
+############################################################################
+
+- Assignment
+
+#  apply the recode and collapse function to the the marital column from the gss_cat dataset
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"slideNumberFormat": "%current%",
 "highlightStyle": "github",
 "highlightLines": true,
-"ratio": "16:9",
-"countIncrementalSlides": true
+"countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
