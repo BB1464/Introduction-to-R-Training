@@ -1,0 +1,44 @@
+---
+title: "Introduction to Janitor Package"
+subtitle: 
+author: "Oluwafemi Oyedele"
+institute: 
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: ["default","metropolis","metropolis-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+- Janitor has simple little tools for examining and cleaning dirty data.
+
+- The main janitor functions: perfectly format ugly data.frame column names.
+
+- It also provide quick one-and two-variable tabulations (i.e., frequency tables and crosstabs) that improves the base R function table()
+
+- This package allows the principles of the **tidyverse** and in particular works well with the pipe functions.
+
+```{r, eval=FALSE}
+install.packages('janitor')
+```
+---
+# Catalog of janitor functions
+
+- clean_names
+
+- tabyl() which is an alternative to table() in base R 
+
+- remove_empty
+
+- adorn_totals
+
+- get_dupes
+
+
+- excel_numeric_to_date
+
+- convert_to_date
