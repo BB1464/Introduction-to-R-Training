@@ -1,0 +1,16 @@
+---
+title: "Data Visualization in R"
+subtitle: 
+author: "Oluwafemi Oyedele"
+institute: 
+date: "2022/03/01 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
