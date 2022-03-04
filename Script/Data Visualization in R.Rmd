@@ -14,3 +14,23 @@ output:
 ---
 
 
+- A system for 'declarative' creating graphics, based on "The Grammar of Graphics". You provide the data, tell 'ggplot2' how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+
+
+- Layers in ggplot2
+
+- data
+
+- Aesthetic mapping
+
+- Geometry
+
+- Statistics
+
+- Theme
+
+- Fecetting
+
+
+- Coordinate system
+
