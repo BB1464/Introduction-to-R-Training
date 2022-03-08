@@ -26,3 +26,60 @@ ggplot(data = iris,aes(x = Species,y = Sepal.Length,col=Species))+
   labs(y='Sepal Length')+
   theme(text = element_text(family = 'serif',face = 'bold',size = 15))+
   geom_jitter()
+
+
+# Histogram
+
+ggplot(data=mtcars,mapping = aes(x = mpg,fill=factor(gear)))+
+  geom_histogram(binwidth = 1)+
+  scale_fill_discrete(name='gear')
+
+
+# Violin Plot
+ggplot(data = iris,aes(x = Species,y=Petal.Length,fill=Species))+
+  geom_violin()
+
+
+# Density Plot
+ggplot(data = iris,aes(x=Petal.Length,fill=Species))+
+  geom_density()+
+  theme_classic()+
+  coord_cartesian(expand = c(0,0))+
+  theme(axis.ticks = element_line(size = 1,linetype = 1),
+        text = element_text(family = 'serif',face = 'bold'),plot.title = element_text(hjust = 0.5),plot.caption = element_text(hjust = 0.5))+
+  scale_fill_brewer(palette = 'Dark2')+
+  labs(title = 'Distribution of Flower Species',caption = 'Fig 1: Flower Species distribution pattern',x='Petal Length',y='Density',fill='Flower Species')
+
+
+# Bar Plot
+
+ggplot(data = iris,mapping = aes(x = Species,y = Petal.Length,fill=Species))+
+  geom_col()
+
+
+# Second Approach
+ggplot(data = iris,mapping = aes(x = Species))+
+  geom_bar()
+
+
+#install.packages('gapminder')
+library(gapminder)
+data("gapminder")
+View(gapminder)
+
+
+gapminder %>% 
+  group_by(country,year,continent) %>% 
+  summarise(lifeExp=mean(lifeExp)) %>% 
+  ggplot(aes(x = year,y = lifeExp))+
+  geom_point()+
+  facet_wrap(~continent)
+
+
+
+
+# Scatter Plot
+ggplot(gapminder,aes(x = pop,y = lifeExp))+
+  geom_point()+
+  facet_wrap(~continent)+
+  scale_x_log10()
