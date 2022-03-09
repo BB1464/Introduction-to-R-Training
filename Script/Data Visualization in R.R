@@ -83,3 +83,32 @@ ggplot(gapminder,aes(x = pop,y = lifeExp))+
   geom_point()+
   facet_wrap(~continent)+
   scale_x_log10()
+
+#install.packages(c('ggThemeAssist','esquisse'))
+
+library(ggThemeAssist)
+library
+ggplot(gapminder) +
+ aes(x = gdpPercap, y = pop,col=continent) +
+ geom_point(shape = "circle",show.legend = FALSE) +
+ scale_color_hue(direction = 1) +
+ labs(x = "GDP per Capital", y = "Population", caption = "Pop by GDP perCap") +
+ ggthemes::theme_base()+
+  scale_x_log10()+
+  scale_y_log10()+
+  geom_smooth(method = 'lm',se=FALSE)+ theme(axis.text = element_text(family = "serif",
+    size = 14, face = "bold", colour = "gray24"),
+    legend.text = element_text(family = "serif"),
+    legend.title = element_text(family = "serif"))
+
+
+# Bar Plot
+ggplot(data = iris,mapping = aes(x=Species,y = Sepal.Length,fill=Species))+
+  stat_summary(geom = 'col',position = 'dodge',fun = 'mean')+
+  stat_summary(fun.data = 'mean_se',geom = 'errorbar',position = position_dodge(.9),width=.2,size=0.9,col='black')+
+  theme_classic()+
+  coord_cartesian(expand = c(0,0))+
+  scale_fill_brewer(palette = 'Set1')+
+  theme(text = element_text(family = 'serif',face = 'bold'))+
+  labs(y='Sepal Length')
+
