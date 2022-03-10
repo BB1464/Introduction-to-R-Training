@@ -1,0 +1,71 @@
+---
+title: "Report Writting in R"
+author: "Oluwafemi Oyedele"
+date: '2022-03-10'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+plot(iris$Sepal.Length,iris$Sepal.Width)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Hello
+This report contains the work flow in which I used in performing my 
+analysis. It also contains `r ncol(iris)`.
+
+```{r t_test}
+t.test(iris$Sepal.Length,iris$Sepal.Width)
+```
+
+```{r library, load}
+library(ggplot2)
+```
+
+```{r Visualization}
+ggplot(data = iris,aes(Sepal.Length,Sepal.Width,col=Species))+
+  geom_point()
+```
+
+## R Markdown
+
+# Import the plot into R
+
+!['Hello R'](image/data-science-workflow.png)
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+[**you click this link for further details**](http://rmarkdown.rstudio.com)
+
+# **Hello** # This is bold text # __Hello__ # This is bold
+
+# *World* # This is Italics  # _World_ # This is Italics
+
+# Hi # This is level one header
+
+# Hi # This is level two header
+
+![](image/01_tidyverse_data_science.png)
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r table}
+library(dplyr)
+iris %>% knitr::kable()
+```
+
