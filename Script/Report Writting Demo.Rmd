@@ -3,7 +3,28 @@ title: "Report Writting in R"
 author: "Oluwafemi Oyedele"
 date: '2022-03-10'
 output: html_document
+bibliography: references.bib
 ---
+
+# Abstract
+
+# Introduction
+
+Yam production in Nigeria is one of the largest agricultural produce [@pérez-flores2017a]. Knowing the nutrient composition of litter is useful for planning nutrient management of plantations [@bai2022leaf]. In Cocoa (\*Theobroma\* \*cacao\* L.) plantations, tree species are combined in different vertical strata [@fontes2014nutrient; @pérez-flores2017a]. Cocoa litter has a poor quality @fontes2014nutrient reported N rate in cocoa litter was low .
+
+# M and M
+
+# Result
+
+# Discussion
+
+# Conclusion
+
+# Acknowlegement
+
+\n
+
+# References
 
 ```{r setup, include=FALSE}
 plot(iris$Sepal.Length,iris$Sepal.Width)
@@ -11,8 +32,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Hello
-This report contains the work flow in which I used in performing my 
-analysis. It also contains `r ncol(iris)`.
+
+This report contains the work flow in which I used in performing my analysis. It also contains `r ncol(iris)`.
 
 ```{r t_test}
 t.test(iris$Sepal.Length,iris$Sepal.Width)
@@ -37,13 +58,13 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 [**you click this link for further details**](http://rmarkdown.rstudio.com)
 
-# **Hello** # This is bold text # __Hello__ # This is bold
+# **Hello** \# This is bold text \# **Hello** \# This is bold
 
-# *World* # This is Italics  # _World_ # This is Italics
+# *World* \# This is Italics \# *World* \# This is Italics
 
-# Hi # This is level one header
+# Hi \# This is level one header
 
-# Hi # This is level two header
+# Hi \# This is level two header
 
 ![](image/01_tidyverse_data_science.png)
 
@@ -63,9 +84,7 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-
 ```{r table}
 library(dplyr)
 iris %>% knitr::kable()
 ```
-
