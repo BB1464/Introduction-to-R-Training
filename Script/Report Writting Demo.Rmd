@@ -2,7 +2,9 @@
 title: "Report Writting in R"
 author: "Oluwafemi Oyedele"
 date: '2022-03-10'
-output: html_document
+output:
+  word_document: default
+  html_document: default
 bibliography: references.bib
 ---
 
@@ -10,11 +12,55 @@ bibliography: references.bib
 
 # Introduction
 
-Yam production in Nigeria is one of the largest agricultural produce [@pérez-flores2017a]. Knowing the nutrient composition of litter is useful for planning nutrient management of plantations [@bai2022leaf]. In Cocoa (\*Theobroma\* \*cacao\* L.) plantations, tree species are combined in different vertical strata [@fontes2014nutrient; @pérez-flores2017a]. Cocoa litter has a poor quality @fontes2014nutrient reported N rate in cocoa litter was low .
+Yam production in Nigeria is one of the largest agricultural produce [@pérez-flores2017a]. Knowing the nutrient composition of litter is useful for planning nutrient management of plantations [@bai2022leaf]. In Cocoa (*Theobroma* cacao\* L.) plantations, tree species are combined in different vertical strata [@fontes2014nutrient; @pérez-flores2017a]. Cocoa litter has a poor quality @fontes2014nutrient reported N rate in cocoa litter was low .
 
-# M and M
+The objectives of this work is to identify the socio-economy characteristics of the farmers.
+
+# Materials and Methods
+
+Study area
+
+The study was conducted in the ejido Miguel Hi dalgo. Climate is hot and wet abundant rain in summer.
+
+```{r Map,echo=FALSE,message=FALSE,warning=FALSE}
+library(leaflet)
+
+leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lng = 4.201,lat = 7.234)
+```
+
+The experiment was a factorial laid out in a RCBD with three replicates.
+
+# Statistical analysis
+
+The data collected was analyzed using analysis of variance (ANOVA) and significantly different means were seperated using Tukey's HSD at (P\<0.05).
 
 # Result
+
+50% of the females staying in the community are traders, 30% are teachers while 20% are farmers.
+
+| Sex    | Occupation | Result |
+|--------|------------|--------|
+| Female | Trader     | 50     |
+| Female | Teacher    | 30     |
+| Female | Farmer     | 20     |
+
+: Socio-economic characteristics of the female farmers
+
+```{r}
+Table2 <- tibble::tribble(
+      ~Sex, ~Occupation, ~Result,
+  "Female",    "Trader",      50,
+  "Female",   "Teacher",      30,
+  "Female",    "Farmer",      20
+  )
+
+require(knitr)
+kable(Table2, digits = 3, row.names = FALSE, align = "c",
+              caption = 'Socio Economic Characteristics of the farmer')
+
+```
 
 # Discussion
 
@@ -22,69 +68,6 @@ Yam production in Nigeria is one of the largest agricultural produce [@pérez-fl
 
 # Acknowlegement
 
-\n
+\newpage
 
-# References
-
-```{r setup, include=FALSE}
-plot(iris$Sepal.Length,iris$Sepal.Width)
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-# Hello
-
-This report contains the work flow in which I used in performing my analysis. It also contains `r ncol(iris)`.
-
-```{r t_test}
-t.test(iris$Sepal.Length,iris$Sepal.Width)
-```
-
-```{r library, load}
-library(ggplot2)
-```
-
-```{r Visualization}
-ggplot(data = iris,aes(Sepal.Length,Sepal.Width,col=Species))+
-  geom_point()
-```
-
-## R Markdown
-
-# Import the plot into R
-
-!['Hello R'](image/data-science-workflow.png)
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-[**you click this link for further details**](http://rmarkdown.rstudio.com)
-
-# **Hello** \# This is bold text \# **Hello** \# This is bold
-
-# *World* \# This is Italics \# *World* \# This is Italics
-
-# Hi \# This is level one header
-
-# Hi \# This is level two header
-
-![](image/01_tidyverse_data_science.png)
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-```{r table}
-library(dplyr)
-iris %>% knitr::kable()
-```
+**References**
