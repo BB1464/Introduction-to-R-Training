@@ -3,8 +3,8 @@ title: "Report Writting in R"
 author: "Oluwafemi Oyedele"
 date: '2022-03-10'
 output:
-  word_document: default
-  html_document: default
+  word_document:
+   reference_docx: template.docx
 bibliography: references.bib
 ---
 
@@ -48,25 +48,25 @@ The data collected was analyzed using analysis of variance (ANOVA) and significa
 
 : Socio-economic characteristics of the female farmers
 
-```{r}
-Table2 <- tibble::tribble(
-      ~Sex, ~Occupation, ~Result,
-  "Female",    "Trader",      50,
-  "Female",   "Teacher",      30,
-  "Female",    "Farmer",      20
-  )
-
-require(knitr)
-kable(Table2, digits = 3, row.names = FALSE, align = "c",
-              caption = 'Socio Economic Characteristics of the farmer')
-
+```{r,echo=FALSE,message=FALSE,warning=FALSE,fig.cap='plot1'}
+library(ggplot2)
+ggplot(data=iris,aes(x=Sepal.Length,y=Sepal.Width))+geom_point()+
+  geom_smooth()
 ```
 
 # Discussion
 
+The traders were selling agricultural produce for the farmers. 50% of the traders were female, 30% were teachers and 20% were farmers which shows that majority of the female living in the community were traders (Table 1) [@adebayo2020assessment].
+
+According to plot1 the Sepal length has a strong negative relationship with Sepal Width.
+
 # Conclusion
 
-# Acknowlegement
+It is concluded that majority of the female traders focus more on agricultural produce.
+
+# Acknowledgement
+
+I am pleased to appreciate Prof Fatimah from University of Ibadan Nigeria for assisting me throughout the computation of this manuscript. I appreciate Dr Mr Femi for all hard work in encouraging me throughout the research.
 
 \newpage
 
