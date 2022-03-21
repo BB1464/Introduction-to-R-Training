@@ -12,7 +12,7 @@ bibliography: references.bib
 
 # Introduction
 
-Yam production in Nigeria is one of the largest agricultural produce [@pérez-flores2017a]. Knowing the nutrient composition of litter is useful for planning nutrient management of plantations [@bai2022leaf]. In Cocoa (*Theobroma* cacao\* L.) plantations, tree species are combined in different vertical strata [@fontes2014nutrient; @pérez-flores2017a]. Cocoa litter has a poor quality @fontes2014nutrient reported N rate in cocoa litter was low .
+Yam production in Nigeria is one of the largest agricultural produce [@pérez-flores2017a]. Knowing the nutrient composition of litter is useful for planning nutrient management of plantations [@bai2022leaf]. In Cocoa (*Theobroma* *cacao* L.) plantations, tree species are combined in different vertical strata [@fontes2014nutrient; @pérez-flores2017a]. Cocoa litter has a poor quality @fontes2014nutrient reported N rate in cocoa litter was low .
 
 The objectives of this work is to identify the socio-economy characteristics of the farmers.
 
