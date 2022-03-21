@@ -1,0 +1,108 @@
+---
+title: Scientific Writting in R
+author:
+  - name: Fatimah 
+    email: alice@example.com
+    affiliation: IITA
+    correspondingauthor: true
+    footnote: 1
+  - name: Bob Security
+    email: bob@example.com
+    affiliation: Another University
+  - name: Cat Memes
+    email: cat@example.com
+    affiliation: Another University
+    footnote: 2
+  - name: Derek Zoolander
+    email: derek@example.com
+    affiliation: Some Institute of Technology
+    footnote: 2
+address:
+  - code: Some Institute of Technology
+    address: Department, Street, City, State, Zip
+  - code: Another University
+    address: Department, Street, City, State, Zip
+footnote:
+  - code: 1
+    text: "This "
+  - code: 2
+    text: "Another author footnote."
+abstract: |
+  This is the abstract.
+  Purpose: Although litter decomposition and nutrient release patterns have been studied in cocoa agroforestry systems in general, studies focusing on organic and conventional cocoa systems are lacking which is critical as organic farms are particularly dependent on  nutrient return from decomposing litter.
+
+keywords: 
+  - Litter decomposition
+  - Litterfall
+journal: "An awesome journal"
+date: "`r Sys.Date()`"
+classoption: preprint, 3p, authoryear
+bibliography: mybibfile.bib
+linenumbers: false
+numbersections: true
+# Use a CSL with `citation_package = "default"`
+# csl: https://www.zotero.org/styles/elsevier-harvard
+output: 
+  rticles::elsevier_article:
+    keep_tex: true
+    citation_package: natbib
+---
+
+# Introduction
+Yam production in Nigeria is one of the largest agricultural produce [@pérez-flores2017a]. Knowing the nutrient composition of litter is useful for planning nutrient management of plantations [@bai2022leaf]. In Cocoa (Theobroma cacao L.) plantations, tree species are combined in different vertical strata [@fontes2014nutrient; @pérez-flores2017a;@Dirac1953888;@Feynman1963118]. Cocoa litter has a poor quality @fontes2014nutrient reported N rate in cocoa litter was low .
+
+The objectives of this work is to identify the socio-economy characteristics of the farmers.
+
+
+
+
+
+
+# Materials and Method
+## Study area
+
+The study was conducted in the ejido Miguel Hi dalgo. Climate is hot and wet abundant rain in summer.
+
+```{r,Map,echo=FALSE,message=FALSE,warning=FALSE}
+library(leaflet)
+
+leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lng = 4.201,lat = 7.234)
+```
+The experiment was a factorial laid out in a RCBD with three replicates.
+
+
+# Statistical analysis
+
+The data collected was analyzed using analysis of variance (ANOVA) and significantly different means were seperated using Tukey's HSD at (P<0.05).
+
+
+
+
+# Result
+
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE,fig.cap='plot1'}
+library(ggplot2)
+ggplot(data=iris,aes(x=Sepal.Length,y=Sepal.Width))+geom_point()+
+  geom_smooth()
+```
+
+# Discussion
+
+The traders were selling agricultural produce for the farmers. 50% of the traders were female, 30% were teachers and 20% were farmers which shows that majority of the female living in the community were traders (Table 1) [@adebayo2020assessment].
+
+According to plot1 the Sepal length has a strong negative relationship with Sepal Width.
+
+# Conclusion
+
+It is concluded that majority of the female traders focus more on agricultural produce.
+
+# Acknowledgement
+
+I am pleased to appreciate Prof Fatimah from University of Ibadan Nigeria for assisting me throughout the computation of this manuscript. I appreciate Dr Mr Femi for all hard work in encouraging me throughout the research.
+
+
+# References {-}
+

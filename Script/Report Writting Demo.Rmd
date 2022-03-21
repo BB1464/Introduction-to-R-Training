@@ -6,6 +6,7 @@ output:
   word_document:
    reference_docx: template.docx
 bibliography: references.bib
+csl: american-journal-of-plant-sciences.csl
 ---
 
 # Abstract
