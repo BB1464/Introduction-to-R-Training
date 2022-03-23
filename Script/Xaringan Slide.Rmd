@@ -1,0 +1,56 @@
+---
+title: "Presentation of Bioinformatic Tools<br>Demo"
+subtitle: "Genome Editing"
+author: "Fatima Sulaiman"
+institute: "IITA"
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ['default','uio','uio-fonts']
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# **What is Bioinformatic**
+
+- Bioinformatics is the tool used in sequencing genes and genome.
+
+- Genome editing of DNA and RNA 
+
+- DNA identification in protein
+---
+# Genome Editing using motif
+
+.pull-left[
+- Probability
+
+- Using Sequencing
+
+- Effect of protein on the DNA
+]
+
+.pull-right[
+
+![](image/logo_pipe.png)
+
+]
+
+---
+# Ife has a big head
+
+.pull-right[
+- Ife is an agricultural economics
+
+- She is an Msc student in the University of Ibadan
+]
+
+.pull-left[
+
+![](image/01_tidyverse_data_science.png)
+
+]
+
+
